@@ -83,7 +83,7 @@ export function applyVisuals(block, data, numberMode, ctrl) {
   });
   const details = block.querySelector(".quiz-details");
   if (details) {
-    const visible = mode === "static" || hasAnswer;
+    const visible = mode === "static" || (mode === "non-immediate" && data.submitted && hasAnswer) || (mode === "immediate" && hasAnswer);
     details.toggleClass("quiz-details--visible", visible);
   }
   if (ctrl) setupActions(block, data, ctrl, ansLetters, pickLetters);
